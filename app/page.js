@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const TELEGRAM_URL = "https://t.me/YourBotUsername?start=website";
+const TELEGRAM_URL = "https://t.me/RealDeelAI_bot";
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(null);
