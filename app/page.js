@@ -1,11 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const TELEGRAM_URL = "https://t.me/RealDeelAI_bot";
+// One tracked channel invite link per source - clicking any of these opens
+// Telegram's native "Request to Join" popup directly (no bot chat first).
+const CHANNEL_LINKS = {
+  ig: "https://t.me/+x7RWkjDU0SoxNTY8",
+  fb: "https://t.me/+shUUrGpELkdkODhk",
+  x: "https://t.me/+BLwrnCE9KVJiMzc0",
+  tiktok: "https://t.me/+V6N9f_gqx5tkYzY0",
+  landing: "https://t.me/+zFFTWUnQvTthNmE0",
+};
+
+const DEFAULT_SOURCE = "landing";
+
+// Reads ?src=ig (preferred - put this on every ad/bio link pointing here)
+// or falls back to loosely matching common utm_source values, so this still
+// works even if ads were tagged with utm_source=instagram/facebook/etc.
+// instead of the exact "ig"/"fb"/"x"/"tiktok" keys.
+function detectSource() {
+  if (typeof window === "undefined") return DEFAULT_SOURCE;
+
+  const params = new URLSearchParams(window.location.search);
+  const raw = (params.get("src") || params.get("utm_source") || "")
+    .trim()
+    .toLowerCase();
+
+  if (CHANNEL_LINKS[raw]) return raw;
+
+  if (raw.includes("insta")) return "ig";
+  if (raw.includes("facebook") || raw === "fb") return "fb";
+  if (raw.includes("twitter") || raw === "x") return "x";
+  if (raw.includes("tiktok")) return "tiktok";
+
+  return DEFAULT_SOURCE;
+}
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(null);
+  const [channelUrl, setChannelUrl] = useState(CHANNEL_LINKS[DEFAULT_SOURCE]);
+
+  useEffect(() => {
+    setChannelUrl(CHANNEL_LINKS[detectSource()]);
+  }, []);
 
   const faqs = [
     {
@@ -50,7 +87,7 @@ export default function Home() {
         </a>
 
         <a
-          href={TELEGRAM_URL}
+          href={channelUrl}
           target="_blank"
           rel="noreferrer"
           className="nav-button"
@@ -79,7 +116,7 @@ export default function Home() {
 
           <div className="hero-actions">
             <a
-              href={TELEGRAM_URL}
+              href={channelUrl}
               target="_blank"
               rel="noreferrer"
               className="primary-button"
@@ -219,7 +256,7 @@ export default function Home() {
           </div>
 
           <a
-            href={TELEGRAM_URL}
+            href={channelUrl}
             target="_blank"
             rel="noreferrer"
             className="gold-button"
@@ -268,7 +305,7 @@ export default function Home() {
         </p>
 
         <a
-          href={TELEGRAM_URL}
+          href={channelUrl}
           target="_blank"
           rel="noreferrer"
           className="primary-button"
