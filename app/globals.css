@@ -82,6 +82,16 @@ a {
   color: white;
 }
 
+.nav-button-whatsapp {
+  background: #25D366;
+  color: #fff;
+  gap: 8px;
+}
+
+.nav-button-whatsapp:hover {
+  background: #1ebe5a;
+}
+
 .primary-button {
   background: var(--gold);
   color: var(--navy);

@@ -2,6 +2,12 @@
 
 import { useEffect, useState } from "react";
 
+// Direct WhatsApp chat - used for the top-right nav button specifically,
+// since not everyone has Telegram. Prefilled with a starter message.
+const WHATSAPP_URL =
+  "https://wa.me/2348034434011?text=" +
+  encodeURIComponent("Hi, I'm interested in RealDeel AI Trading Bot!");
+
 // One tracked channel invite link per source - clicking any of these opens
 // Telegram's native "Request to Join" popup directly (no bot chat first).
 const CHANNEL_LINKS = {
@@ -87,12 +93,22 @@ export default function Home() {
         </a>
 
         <a
-          href={channelUrl}
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noreferrer"
-          className="nav-button"
+          className="nav-button nav-button-whatsapp"
         >
-          Try It Free
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.746-.874-2.892-1.56-4.042-3.539-.306-.526.306-.489.874-1.627.099-.199.05-.372-.05-.52-.099-.15-.596-1.437-.818-1.968-.216-.516-.436-.446-.6-.455h-.51c-.173 0-.446.065-.678.293-.232.229-.882.867-.882 2.115s.906 2.454 1.033 2.625c.126.172 1.75 2.68 4.26 3.65 2.51.97 2.51.647 3.32.57.81-.075 2.613-1.07 2.98-2.108.365-1.037.365-1.928.256-2.114-.11-.198-.3-.297-.6-.446z" />
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 1.82.49 3.53 1.34 5.006L2 22l5.146-1.35A9.94 9.94 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.94 7.94 0 01-4.06-1.11l-.29-.17-3.06.8.82-2.99-.19-.31A7.96 7.96 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z" />
+          </svg>
+          WhatsApp
         </a>
       </nav>
 
