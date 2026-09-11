@@ -88,8 +88,7 @@ export default function Home() {
       {/* NAVBAR */}
       <nav className="navbar">
         <a href="#" className="brand">
-          <span className="brand-mark">RD</span>
-          <span>ReaLDeeL <strong>AI</strong></span>
+          <img src="/realdeel logo.jpeg" alt="ReaLDeeL AI Logo" style={{ height: '82px', width: 'auto' }} />
         </a>
 
         <a
