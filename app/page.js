@@ -331,10 +331,9 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer>
-        <div className="footer-brand">
-          <span className="brand-mark">RD</span>
-          ReaLDeeL <strong>AI</strong>
-        </div>
+        <a href="#" className="brand">
+          <img src="/realdeel logo.jpeg" alt="ReaLDeeL AI Logo" style={{ height: '82px', width: 'auto' }} />
+        </a>
 
         <p>
           Automated trading involves risk. Past or simulated performance does
