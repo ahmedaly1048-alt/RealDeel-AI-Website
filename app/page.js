@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 // Direct WhatsApp chat - used for the top-right nav button specifically,
 // since not everyone has Telegram. Prefilled with a starter message.
 const WHATSAPP_URL =
-  "https://wa.me/2348034434011?text=" +
+  "https://wa.me/2349124688089?text=" +
   encodeURIComponent("Hi, I'm interested in RealDeel AI Trading Bot!");
 
 // One tracked channel invite link per source - clicking any of these opens
